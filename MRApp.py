@@ -12,7 +12,6 @@ model = hub.load(model_url)
 # Load the movies dataset
 df = pd.read_csv('movies.csv')
 
-# Clean the dataset
 df = df[['title', 'overview']].dropna()
 
 overviews = list(df['overview'])
@@ -23,8 +22,6 @@ embeddings = model(overviews)
 nn = NearestNeighbors(n_neighbors=10)
 nn.fit(embeddings)
 
-# Recommender function
-# Recommender function
 def recommender(text):
     emb = model([text])
     neighbors = nn.kneighbors(emb, return_distance=False)[0]
@@ -36,14 +33,12 @@ def recommender(text):
 # Streamlit interface
 st.title("🍿 Movie Recommender")
 
-# Input text box for user input
 text = st.text_input("Enter a genre or your favourite movie: ")
 
-# Call the recommender function when the user clicks the button
 if st.button("Get Recommendations"):
     # Get recommendations based on user input
     recommendations = recommender(text)
     
     # Display recommendations
     st.write("Recommended Movies:")
-    st.table(recommendations[['title', 'overview']].reset_index(drop=True))  # Reset index to remove it
+    st.table(recommendations[['title', 'overview']].reset_index(drop=True)) 
