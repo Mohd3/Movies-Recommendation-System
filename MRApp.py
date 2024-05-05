@@ -3,8 +3,7 @@ import tensorflow as tf
 import tensorflow_hub as hub
 import pandas as pd
 from sklearn.neighbors import NearestNeighbors
-from sklearn.decomposition import PCA
-import plotly.graph_objects as go
+
 
 # Load the Universal Sentence Encoder model
 model_url = 'https://www.kaggle.com/models/google/universal-sentence-encoder/TensorFlow2/universal-sentence-encoder/2'
